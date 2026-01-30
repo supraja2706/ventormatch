@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Your Profile</title>
+
+<style>
+/* 🔥 YOUR DESIGN – UNCHANGED */
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial;
+}
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0d0d0f;
+    color:#fff;
+}
+.container{
+    width:400px;
+    padding:40px;
+    background:#111;
+    border-radius:12px;
+}
+.progress{
+    display:flex;
+    gap:10px;
+    margin-bottom:30px;
+}
+.progress div{
+    flex:1;
+    height:4px;
+    background:#555;
+}
+.progress .active{
+    background:#7b5fff;
+}
+.subtitle{
+    font-size:0.9em;
+    color:#aaa;
+    margin-bottom:15px;
+}
+.upload-box{
+    height:150px;
+    border:2px dashed #333;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+.upload-box input{
+    display:none;
+}
+.upload-box span{
+    color:#aaa;
+    text-align:center;
+}
+input,textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    background:#222;
+    border:none;
+    color:#fff;
+}
+.btn{
+    padding:12px 20px;
+    background:#7b5fff;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<form action="submit_profile.php" method="POST" enctype="multipart/form-data">
+
+    <!-- Progress -->
+    <div class="progress">
+        <div class="active"></div>
+        <div class="active"></div>
+        <div class="active"></div>
+    </div>
+
+    <h2>Complete your profile</h2>
+    <p class="subtitle">Add the finishing touches to your account.</p>
+
+    <!-- Photo -->
+    <label class="upload-box">
+        <input type="file" name="photo" required>
+        <span>Upload Photo<br>Recommended 400x400px</span>
+    </label>
+
+    <!-- About -->
+    <p class="subtitle">Tell us about yourself</p>
+    <textarea name="about" required></textarea>
+
+    <!-- Resume -->
+    <p class="subtitle">Upload your resume</p>
+    <input type="file" name="resume" required>
+
+    <button type="submit" class="btn">Launch</button>
+
+</form>
+
+</div>
+</body>
+</html>
