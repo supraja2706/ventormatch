@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Role Selection</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    background:radial-gradient(circle at left,#1a1530,#050505);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.container{
+    width:460px;
+    text-align:center;
+}
+
+/* PROGRESS BAR */
+.progress{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    margin-bottom:35px;
+}
+
+.progress span{
+    width:70px;
+    height:6px;
+    background:#333;
+    border-radius:10px;
+}
+
+.progress span.active{
+    background:#6a5cff;
+}
+
+h2{
+    font-size:26px;
+    margin-bottom:10px;
+}
+
+p{
+    color:#aaa;
+    margin-bottom:30px;
+}
+
+/* CARDS */
+.card{
+    background:#111;
+    border-radius:18px;
+    padding:26px;
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    cursor:pointer;
+    transition:.35s ease;
+    border:1px solid #222;
+}
+
+.card:hover{
+    border-color:#6a5cff;
+    background:#161622;
+}
+
+.card.selected{
+    border-color:#6a5cff;
+    background:#1a1a2f;
+    box-shadow:0 0 0 2px rgba(106,92,255,.25);
+}
+
+.icon{
+    width:60px;
+    height:60px;
+    background:#6a5cff;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.text{
+    text-align:left;
+}
+
+.text h3{
+    font-size:19px;
+    margin-bottom:4px;
+}
+
+.text small{
+    font-size:14px;
+    color:#aaa;
+}
+
+/* CONTINUE BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    background:#6a5cff;
+    padding:14px 38px;
+    border-radius:30px;
+    color:white;
+    font-size:16px;
+    text-decoration:none;
+    transition:.3s;
+    opacity:.5;
+    pointer-events:none;
+}
+
+.btn.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.btn:hover{
+    background:#7b6cff;
+}
+
+/* MOBILE */
+@media(max-width:480px){
+    .container{width:90%;}
+    h2{font-size:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="progress">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <h2>What describes you best?</h2>
+    <p>Help us find the right matches for you.</p>
+
+    <div class="card" data-role="student">
+        <div class="icon">🎓</div>
+        <div class="text">
+            <h3>Student / Founder</h3>
+            <small>I have an idea or technical skills to build something new</small>
+        </div>
+    </div>
+
+    <div class="card" data-role="investor">
+        <div class="icon" style="background:#1dbf73;">💼</div>
+        <div class="text">
+            <h3>Investor / Mentor</h3>
+            <small>I want to fund, guide, or partner with talented student teams</small>
+        </div>
+    </div>
+
+    <!-- CONTINUE ALWAYS GOES HERE -->
+    <a href="looking.html" class="btn">Continue →</a>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const btn = document.querySelector('.btn');
+let selectedRole = null;
+
+cards.forEach(card=>{
+    card.addEventListener('click',()=>{
+        cards.forEach(c=>c.classList.remove('selected'));
+        card.classList.add('selected');
+
+        selectedRole = card.dataset.role;
+        localStorage.setItem('selectedRole', selectedRole);
+
+        btn.classList.add('active');
+    });
+});
+
+btn.addEventListener('click',e=>{
+    if(!selectedRole){
+        e.preventDefault();
+        alert('Please select one option to continue.');
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Selection Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    height:100vh;
+    background:radial-gradient(circle at left,#1b1530,#050508);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+}
+
+.container{
+    width:460px;
+    text-align:center;
+}
+
+/* PROGRESS */
+.progress{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    margin-bottom:35px;
+}
+
+.progress span{
+    width:70px;           /* BIGGER */
+    height:6px;           /* THICKER */
+    background:#333;
+    border-radius:10px;
+}
+
+.progress span.active{
+    background:#6a5cff;
+}
+
+h2{
+    font-size:26px;
+    margin-bottom:8px;
+}
+
+p{
+    font-size:15px;
+    color:#aaa;
+    margin-bottom:30px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+/* CARDS */
+.card{
+    background:#121216;
+    border:1px solid #2a2a2a;
+    padding:28px 20px;     /* BIGGER */
+    border-radius:16px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:17px;       /* BIGGER TEXT */
+}
+
+.card:hover{
+    border-color:#7b61ff;
+    box-shadow:0 0 14px rgba(123,97,255,.6);
+}
+
+.card.selected{
+    border:2px solid #7b61ff;
+    box-shadow:0 0 16px rgba(123,97,255,.85);
+    color:#7b61ff;
+}
+
+/* BOTTOM */
+.bottom{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.back{
+    font-size:15px;
+    color:#aaa;
+    cursor:pointer;
+}
+
+/* BUTTON */
+.btn{
+    background:#7b61ff;
+    border:none;
+    color:#fff;
+    padding:14px 28px;     /* BIGGER */
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn:hover{
+    background:#6a52e5;
+}
+
+/* MOBILE */
+@media(max-width:480px){
+    .container{
+        width:90%;
+    }
+
+    .grid{
+        gap:16px;
+    }
+
+    .card{
+        padding:24px 16px;
+        font-size:16px;
+    }
+}
+</style>
+
+<script>
+function toggleSelect(card){
+    card.classList.toggle("selected");
+}
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="progress">
+        <span class="active"></span>
+        <span class="active"></span>
+        <span></span>
+    </div>
+
+    <h2>What are you looking for?</h2>
+    <p>Select as many as you like.</p>
+
+    <div class="grid">
+        <div class="card" onclick="toggleSelect(this)">🚀 Funding</div>
+        <div class="card" onclick="toggleSelect(this)">🤝 Mentorship</div>
+        <div class="card" onclick="toggleSelect(this)">👥 Co-founder</div>
+        <div class="card" onclick="toggleSelect(this)">🌐 Networking</div>
+        <div class="card" onclick="toggleSelect(this)">🎓 Internship</div>
+        <div class="card" onclick="toggleSelect(this)">⚡ Quick Advice</div>
+    </div>
+
+    <div class="bottom">
+        <div class="back">← Back</div>
+        <a href="completion.html" class="btn">Continue →</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

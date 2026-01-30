@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VentureMatch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top,#1b1533,#050507);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 90px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+
+.logo span{
+  background:#7c5cff;
+  padding:10px 14px;
+  border-radius:50%;
+}
+
+nav a{
+  margin:0 16px;
+  font-size:14px;
+  color:#cfcfcf;
+}
+
+.nav-btn{
+  background:#fff;
+  color:#000;
+  padding:8px 18px;
+  border-radius:22px;
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:130px 20px;
+  animation:fadeUp 1s ease;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 16px;
+  background:rgba(124,92,255,.15);
+  color:#cbbfff;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:24px;
+}
+
+.hero h1{
+  font-size:58px;
+  font-weight:800;
+}
+
+.hero span{color:#7c5cff}
+
+.hero p{
+  max-width:680px;
+  margin:26px auto;
+  color:#aaa;
+  line-height:1.6;
+}
+
+.hero-buttons{
+  margin-top:40px;
+}
+
+.btn-primary{
+  background:#7c5cff;
+  padding:15px 34px;
+  border-radius:30px;
+  font-weight:600;
+  box-shadow:0 0 25px rgba(124,92,255,.4);
+}
+
+.btn-secondary{
+  border:1px solid #333;
+  padding:15px 34px;
+  border-radius:30px;
+  margin-left:14px;
+  color:#ccc;
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:44px;
+  padding:100px;
+}
+
+.card{
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  backdrop-filter:blur(22px);
+  border-radius:26px;
+  padding:46px;
+  border:1px solid rgba(255,255,255,.1);
+  position:relative;
+  overflow:hidden;
+  transition:transform .45s ease, box-shadow .45s ease;
+  animation:fadeUp .9s ease both;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,#7c5cff55,transparent 70%);
+  opacity:0;
+  transition:.45s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover{
+  transform:translateY(-14px) scale(1.03);
+  box-shadow:0 30px 80px rgba(124,92,255,.25);
+}
+
+/* ICON ANIMATION */
+.icon{
+  width:64px;
+  height:64px;
+  border-radius:18px;
+  background:rgba(124,92,255,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  margin-bottom:26px;
+  animation:floatIcon 4s ease-in-out infinite;
+  box-shadow:0 0 30px rgba(124,92,255,.35);
+}
+
+/* TEXT */
+.card h3{
+  margin-bottom:16px;
+  font-size:22px;
+}
+
+.card p{
+  color:#cfcfcf;
+  line-height:1.7;
+  font-size:15.5px;
+}
+
+/* NAV RIGHT (SMALL GAP) */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  text-align:center;
+  padding:70px 90px;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.stats h2{
+  font-size:38px;
+}
+
+.stats p{
+  color:#aaa;
+  letter-spacing:1px;
+  margin-top:6px;
+  font-size:13px;
+}
+
+/* FOOTER */
+footer{
+  padding:50px 20px;
+  text-align:center;
+}
+
+.footer-logo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-bottom:20px;
+  font-weight:700;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin-bottom:20px;
+  font-size:14px;
+  color:#aaa;
+}
+
+.footer-links a:hover{
+  color:#7c5cff;
+}
+
+footer p{
+  color:#666;
+  font-size:13px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes floatIcon{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+      header {
+        padding: 20px;
+      }
+      .features, .stats {
+        padding: 40px 20px;
+      }
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+
+.hero-title{
+  font-size:78px;              /* BIG like the image */
+  font-weight:800;
+  line-height:1.02;
+  letter-spacing:-2px;
+  text-align:center;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+
+
+/* Gradient text exactly like premium SaaS */
+.gradient-text{
+  background:linear-gradient(90deg,#7c5cff,#bfa8ff,#ffffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* Slight glow for depth */
+.gradient-text{
+  filter:drop-shadow(0 0 12px rgba(124,92,255,.35));
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <span>V</span> VentureMatch
+  </div>
+
+  <nav class="nav-center">
+    <a href="#">Investors</a>
+    <a href="#">Startups</a>
+    <a href="#">Success Stories</a>
+  </nav>
+
+  <div class="nav-right">
+    <a href="loginpage.html">Log In</a>
+    <a href="describe.html" class="nav-btn">Get Started</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="badge">⚡ MATCHING ENGINE 2.0 LIVE</div>
+  <h1 class="hero-title">
+  Where talent meets<br>
+  <span class="gradient-text">Opportunity.</span>
+</h1>
+  <p>The swipe-based platform for the next generation of founders. Algorithm-driven matching based on skills, domain overlap, and funding needs.</p>
+  <div class="hero-buttons">
+    <a class="btn-primary" href="describe.html">Launch App →</a>
+    <a class="btn-secondary" href="loginpage.html">Create Account</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="card">
+    <div class="icon">👥</div>
+    <h3>Project Matching</h3>
+    <p>Advanced weighted algorithms connect founders and investors using skills, sectors, and compatibility scoring.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon">🛡️</div>
+    <h3>Verified Profiles</h3>
+    <p>Identity, education, and portfolio verification ensures trust, safety, and credibility.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon">📊</div>
+    <h3>Real-time Metrics</h3>
+    <p>Live analytics dashboard tracks pitch views, engagement, and conversion metrics.</p>
+  </div>
+</section>
+
+<section class="stats">
+  <div><h2>1,500+</h2><p>ACTIVE FOUNDERS</p></div>
+  <div><h2>240+</h2><p>GLOBAL VCS</p></div>
+  <div><h2>$4.2M</h2><p>CAPITAL MATCHED</p></div>
+  <div><h2>12</h2><p>DAY MATCH TIME</p></div>
+</section>
+
+<footer>
+  <div class="footer-logo"><span class="logo"><span>V</span></span>VentureMatch</div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Support</a>
+    <a href="#">Contact</a>
+  </div>
+  <p>© 2026 VentureMatch Platform Software. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
